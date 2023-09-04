@@ -3,6 +3,7 @@ import {
     TCheckUser,
     TUpdateUser
 } from "./types";
+
 import prisma from "../../prismadb";
 import { User } from "@prisma/client";
 
@@ -43,4 +44,10 @@ const updateUserName = async (params: TUpdateUser): Promise<void> => {
             name: to
         }
     });
+}
+
+export {
+    checkUser,
+    createUser,
+    updateUserName
 }
