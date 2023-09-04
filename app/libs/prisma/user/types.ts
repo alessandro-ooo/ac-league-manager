@@ -2,8 +2,8 @@ type TAddUser = {
     id: string;
     name: string;
 }
-type TCheckUser = {
-    id: string;
+interface TCheckUser {
+    id: string | undefined;
 }
 
 type TUpdateUser = {

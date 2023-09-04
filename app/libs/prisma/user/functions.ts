@@ -7,8 +7,7 @@ import {
 import prisma from "../../prismadb";
 import { User } from "@prisma/client";
 
-const checkUser = async (params: TCheckUser): Promise<{id: string; name: string;} | null> => {
-    const { id } = params;
+const checkUser = async (id: string | undefined): Promise<{id: string; name: string;} | null> => {
 
     const result = await prisma.user.findUnique({
         where: {
@@ -19,8 +18,7 @@ const checkUser = async (params: TCheckUser): Promise<{id: string; name: string;
     return result;
 }
 
-const createUser = async (params: TAddUser): Promise<User> => {
-    const {id, name} = params;
+const createUser = async (id: string, name: string): Promise<User> => {
 
     const result = await prisma.user.create({
         data: {
@@ -32,8 +30,7 @@ const createUser = async (params: TAddUser): Promise<User> => {
     return result;
 }
 
-const updateUserName = async (params: TUpdateUser): Promise<void> => {
-    const {to, from} = params; 
+const updateUserName = async (to: string, from: string): Promise<void> => {
 
     const result = await prisma.user.update({
         where: {
