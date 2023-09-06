@@ -34,7 +34,6 @@ const NewUserForm = () => {
 
             const result = await res.json();
             console.log(result.message);
-
         })}>
 
             <Input type="input" label="username" placeholder="username" {...register("username", { required: true, minLength: 2, maxLength: 20})}/>
