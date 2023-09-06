@@ -2,7 +2,6 @@
 
 import { useForm } from 'react-hook-form';
 import { TNewUserForm } from '../types';
-import { createUser } from '@/app/libs/prisma/user/functions';
 import { useSession } from "next-auth/react"
 import Input from '../Input';
 
@@ -16,21 +15,28 @@ const NewUserForm = () => {
         formState: { errors }
     } = useForm<TNewUserForm>({
         defaultValues: {
-            username: ''
+            username: '',
+            id: ''
         }
     });
-
+    
     return (
         <form onSubmit={handleSubmit(async (data) => {
-            const newUser = await createUser(JSON.stringify(session?.user?.id), data.username);
-            if(newUser) {
-                return console.log("OK!");
-            }
+            data.id = JSON.stringify(session?.user?.id);
 
-            if(!newUser) {
-                return console.log("NO!");
-            }
+            const res = await fetch('/api/newuser', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await res.json();
+            console.log(result.message);
+
         })}>
+
             <Input type="input" label="username" placeholder="username" {...register("username", { required: true, minLength: 2, maxLength: 20})}/>
             <input type="submit" />
         </form>
