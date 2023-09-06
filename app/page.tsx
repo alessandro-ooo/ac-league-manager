@@ -1,14 +1,15 @@
-import { useSession } from "next-auth/react"
-import { authOptions } from "./api/auth/[...nextauth]/route"
-
+import { getServerSession } from "next-auth/next"
 import {LoginBtn, SignOutBtn} from "./components/LoginBtn";
 import { checkUser, createUser } from "./libs/prisma/user/functions";
 import User from "./components/User";
+import { authOptions } from "./api/auth/[...nextauth]/route";
+import Dialog from "./components/dialog/Dialog";
+import Input from "./components/Input";
+import NewUserForm from "./components/forms/NewUserForm";
 
 const Home = async () => {
-    const { data: session } = useSession();
-    const user = await checkUser(session?.user.id);
-
+    const session = await getServerSession(authOptions)
+    
     if(!session) {
         return (
             <div>
@@ -19,10 +20,15 @@ const Home = async () => {
     }
 
     if(session) {
+        const user = await checkUser(session?.user.id);
+
         if(user == null) {
-            console.log(session.user.name)
-            const newUser = await createUser(session?.user.id, session?.user.name);
-            console.log(newUser);
+            // const newUser = await createUser(session?.user.id, session?.user.name);
+            return (
+                <Dialog>
+                    <NewUserForm />
+                </Dialog>
+            )
         }
     }
 }
