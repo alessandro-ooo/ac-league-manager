@@ -1,15 +1,18 @@
+"use server"
+
 import { getServerSession } from "next-auth/next"
-import {LoginBtn, SignOutBtn} from "./components/LoginBtn";
-import { checkUser, createUser } from "./libs/prisma/user/functions";
-import User from "./components/User";
+import {LoginBtn} from "./components/LoginBtn";
+import { checkUser } from "./libs/prisma/user/functions";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import Dialog from "./components/dialog/Dialog";
-import Input from "./components/Input";
 import NewUserForm from "./components/forms/NewUserForm";
+import { getUsernameCookie, setUsernameCookie } from "./libs/cookies/functions";
 
 const Home = async () => {
     const session = await getServerSession(authOptions)
-    
+    getUsernameCookie
+    const idc = getUsernameCookie()
+
     if(!session) {
         return (
             <div>
@@ -21,15 +24,21 @@ const Home = async () => {
 
     if(session) {
         const user = await checkUser(session?.user.id);
-
-        if(user == null) {
-            // const newUser = await createUser(session?.user.id, session?.user.name);
+        console.log(user)
+        if(user.length == 0) {
             return (
                 <Dialog>
                     <NewUserForm />
                 </Dialog>
             )
+        } else {
+            setUsernameCookie(user[0].name);
+            const cUsername = getUsernameCookie();
+            return (
+                <p>Display username: {cUsername}</p>
+            )
         }
+        
     }
 }
 
