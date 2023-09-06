@@ -1,13 +1,7 @@
-import { 
-    TAddUser,
-    TCheckUser,
-    TUpdateUser
-} from "./types";
-
 import prisma from "../../prismadb";
 import { User } from "@prisma/client";
 
-const checkUser = async (id: string | undefined): Promise<{id: string; name: string;} | null> => {
+const checkUser = async (id: string | undefined): Promise<{id: string} | null> => {
 
     const result = await prisma.user.findUnique({
         where: {
