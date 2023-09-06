@@ -8,12 +8,12 @@ declare module "next-auth" {
     }
 
 
-interface User {
-    id: string;
-    name: string;
-    image: string;
-    email: string;
-}
+    interface User {
+        id: string;
+        name: string;
+        image: string;
+        email: string;
+    }
 }
 
 export const authOptions: NextAuthOptions = {
@@ -27,22 +27,25 @@ export const authOptions: NextAuthOptions = {
         // https://stackoverflow.com/questions/75118956/how-do-i-receive-the-user-id-from-a-session-using-next-auth
         // CREDITS ^^^
         async jwt({ token, account, profile }: any) {
-          // Persist the OAuth access_token and or the user id to the token right after signin
-          if (account) {
-            console.log("token", token);
-            token.accessToken = account.access_token;
-            token.id = profile.id;
-          }
-          return token;
+            // Persist the OAuth access_token and or the user id to the token right after signin
+            if (account) {
+                console.log("token", token);
+                token.accessToken = account.access_token;
+                token.id = profile.id;
+            }
+            return token;
         },
         async session({ session, token, user }: any) {
-          // Send properties to the client, like an access_token and user id from a provider.
-          if (token) {
-            session.accessToken = token.accessToken;
-            session.user = {};
-            session.user.id = token.id;
-          }
-          return session;
+            // Send properties to the client, like an access_token and user id from a provider.
+            if (token) {
+                session.accessToken = token.accessToken;
+                session.user = {};
+                session.user.id = token.id;
+                session.user.name = token.name
+                session.user.mail = token.mail
+                session.user.image = token.image
+            }
+            return session;
         },
     },
 
