@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
             }
             return token;
         },
-        async session({ session, token, user }: any) {
+        async session({ session, token }: any) {
             // Send properties to the client, like an access_token and user id from a provider.
             if (token) {
                 session.accessToken = token.accessToken;
