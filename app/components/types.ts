@@ -12,6 +12,7 @@ type TInputProps = {
 
 type TNewUserForm = {
     username: string;
+    id: string;
 }
 
 export type {
