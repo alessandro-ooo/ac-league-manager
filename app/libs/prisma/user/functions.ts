@@ -1,14 +1,14 @@
 import prisma from "../../prismadb";
 import { User } from "@prisma/client";
 
-const checkUser = async (id: string | undefined): Promise<{id: string; name: string;}[]> => {
+const checkUser = async (id: string | undefined): Promise<{ id: string; name: string; } | null> => {
     console.log("func checkuser(" + id + ")");
-    const result = await prisma.user.findMany({
+    const result = await prisma.user.findUnique({
         where: {
-            id: id
-        }
+            name: "alessandrodev"
+        },
     });
-    console.log(result[0].id)
+
     return result;
 }
 
