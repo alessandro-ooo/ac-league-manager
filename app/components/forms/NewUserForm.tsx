@@ -24,7 +24,7 @@ const NewUserForm = () => {
         <form onSubmit={handleSubmit(async (data) => {
             data.id = session?.user?.id as string;
 
-            const res = await fetch('/api/newuser', {
+            const res = await fetch('/api/user', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

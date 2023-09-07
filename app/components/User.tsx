@@ -1,16 +1,46 @@
-"use client"
+import { authOptions } from "../api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth/next"
+import { LoginBtn } from "./LoginBtn";
+import { getUsernameCookie } from "../libs/cookies/functions";
+import { redirect } from "next/navigation";
+import Dialog from "./dialog/Dialog";
+import NewUserForm from "./forms/NewUserForm";
 
-import { useSession } from "next-auth/react"
+const User = async () => {
+    const session = await getServerSession(authOptions);
+    const usernameCookie = getUsernameCookie();
 
-const User = () => {
-    const { data: session } = useSession()
-    return (
-        <div>
-            {/* {JSON.stringify(session)} */}
-            {session?.user?.id}
+    if(session) {
+        if(usernameCookie == undefined) {
+            const res = await fetch('/api/user', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(session.user)
+            });
 
-        </div>
-    )
+            if(res.status == 404) {
+                return (
+                    <Dialog>
+                        <NewUserForm />
+                    </Dialog>
+                )
+            }
+        }
+    }
+
+    if(!session) {
+        return redirect('/login');
+    }
+    // if(!session) {
+    //     return (
+    //         <div>
+    //             Not signed in.
+    //             <LoginBtn></LoginBtn>
+    //         </div>
+    //     )
+    // }
 }
 
 export default User
