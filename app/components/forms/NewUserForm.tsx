@@ -22,7 +22,7 @@ const NewUserForm = () => {
     
     return (
         <form onSubmit={handleSubmit(async (data) => {
-            data.id = JSON.stringify(session?.user?.id);
+            data.id = session?.user?.id as string;
 
             const res = await fetch('/api/newuser', {
                 method: 'POST',
