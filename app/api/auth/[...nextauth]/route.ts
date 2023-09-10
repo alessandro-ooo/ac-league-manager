@@ -1,6 +1,8 @@
 import NextAuth from "next-auth"
 import Discord from "next-auth/providers/Discord"
 import { NextAuthOptions } from "next-auth"
+import { checkUser } from "@/app/libs/prisma/user/functions";
+import { cookies } from "next/headers";
 
 declare module "next-auth" {
     interface Session {
@@ -36,6 +38,7 @@ export const authOptions: NextAuthOptions = {
             return token;
         },
         async session({ session, token }: any) {
+            console.log("session callback")
             // Send properties to the client, like an access_token and user id from a provider.
             if (token) {
                 session.accessToken = token.accessToken;
@@ -44,7 +47,15 @@ export const authOptions: NextAuthOptions = {
                 session.user.name = token.name
                 session.user.mail = token.mail
                 session.user.image = token.image
-            }
+                
+                if(cookies().get('username') == undefined) {
+                    console.log("There is no username cookie, must set")
+                    const user = await checkUser(token.id);
+                    if(user) {
+                        cookies().set('username', user.name);
+                    }
+                }
+            }   
             return session;
         },
     },
