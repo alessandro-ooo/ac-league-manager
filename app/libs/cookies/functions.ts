@@ -9,10 +9,7 @@ const setUsernameCookie = (cUsername: string) => {
 const getUsernameCookie = () => {
     const cUsername = cookies().get("username");
 
-    if(cUsername == undefined) {
-        return undefined;
-    }
-    return ""+ cUsername;
+    return cUsername?.value;
 }
 
 export {
