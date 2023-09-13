@@ -31,15 +31,12 @@ export const authOptions: NextAuthOptions = {
         async jwt({ token, account, profile }: any) {
             // Persist the OAuth access_token and or the user id to the token right after signin
             if (account) {
-                console.log("token", token);
                 token.accessToken = account.access_token;
                 token.id = profile.id;
             }
             return token;
         },
         async session({ session, token }: any) {
-            console.log("session callback")
-            // Send properties to the client, like an access_token and user id from a provider.
             if (token) {
                 session.accessToken = token.accessToken;
                 session.user = {};
@@ -47,16 +44,19 @@ export const authOptions: NextAuthOptions = {
                 session.user.name = token.name
                 session.user.mail = token.mail
                 session.user.image = token.image
-                
-                if(cookies().get('username') == undefined) {
-                    console.log("There is no username cookie, must set")
-                    const user = await checkUser(token.id);
-                    if(user) {
-                        cookies().set('username', user.name);
-                    }
-                }
             }   
             return session;
+        },
+
+        async signIn({ user, account, profile, email, credentials }) {
+            if(cookies().get('username') == undefined) {
+                const userid = await checkUser(user.id);
+
+                if(userid) {
+                    cookies().set('username', user.name);
+                }
+            }
+            return true
         },
     },
 
