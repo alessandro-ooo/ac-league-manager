@@ -49,6 +49,8 @@ export const authOptions: NextAuthOptions = {
         },
 
         async signIn({ user, account, profile, email, credentials }) {
+            cookies().set('discordid', user.id);
+
             if(cookies().get('username') == undefined) {
                 const userid = await checkUser(user.id);
 
