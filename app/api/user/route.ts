@@ -15,9 +15,7 @@ export async function POST (request: NextRequest) {
     
     if(user) {
         cookies().set('username', user.name);
-        redirect('/dashboard');
-        // return NextResponse.json({message: "all good", status: 200});
-
+        return NextResponse.json({message: "OK", status: 200});
     }
     return NextResponse.json({message: "nothing happened", status: 204});
 }

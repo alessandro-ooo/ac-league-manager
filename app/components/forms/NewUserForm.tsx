@@ -1,5 +1,5 @@
 "use client"
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form';
 import { TNewUserForm } from '../types';
 import { useSession } from "next-auth/react"
@@ -20,6 +20,7 @@ const NewUserForm = () => {
             id: ''
         }
     });
+    const router = useRouter()
     return (
         <form onSubmit={handleSubmit(async (data) => {
             data.id = session?.user?.id as string;
@@ -32,10 +33,10 @@ const NewUserForm = () => {
                 body: JSON.stringify(data)
             });
 
-            // const result = await res.json();
-            // if(result.status == 200) {
-            //     redirect('/dashboard')
-            // }
+            const result = await res.json();
+            if(result.status == 200) {
+                router.push('/dashboard');
+            }
         
         })}>
 
