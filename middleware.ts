@@ -22,5 +22,11 @@ const middleware = async (request: NextRequest) => {
             return NextResponse.redirect(new URL('/login/new', request.url));
         }
     }
+
+    if(request.nextUrl.pathname === '/login/new') {
+        if(discordid != undefined && cookie != undefined) {
+            return NextResponse.redirect(new URL('/dashboard', request.url));
+        }
+    }
 }
 export default middleware
