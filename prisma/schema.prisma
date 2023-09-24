@@ -20,4 +20,10 @@ model File {
     uid String
     name String @unique
     users User @relation(fields: [uid], references: [id])
+    texture String @unique
+}
+
+model Car {
+    name String @unique
+    model String @unique
 }
