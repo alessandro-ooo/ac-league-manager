@@ -9,7 +9,7 @@ import Model from './Model';
 
 const Render = () => {
   
-    const placeholder: string = "models/testcar/assettocorsa.fbx";
+    const placeholder: string = "models/testcar/toyota_ae86.fbx";
     
     return (
         <Canvas>

@@ -10,13 +10,11 @@ const Model = (props: TModelProps) => {
         fbx = useFBX(dir);
 
     const textures = useTexture({
-        map: '/models/testcar/2017body.png',
-        aoMap: '/models/testcar/2017body.png',
-        specularMap: '/models/testcar/2017body.png',
+        map: '/models/testcar/body2.png',
     });
 
     useEffect(() => {
-        const myMaterial = new MeshBasicMaterial({...textures}, );
+        const myMaterial = new MeshBasicMaterial ({...textures}, );
         fbx.traverse(child => {
             (child as Mesh).material = myMaterial;
         });
@@ -25,9 +23,7 @@ const Model = (props: TModelProps) => {
     return (
         <mesh>
             <primitive object={fbx} scale={0.05}/>
-            {/* <meshStandardMaterial {...textures} attach="material"/> */}
         </mesh>
-
     )
 }
 
