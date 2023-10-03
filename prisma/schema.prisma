@@ -25,5 +25,5 @@ model File {
 
 model Car {
     name String @unique
-    model String @unique
+    folder String @unique
 }
