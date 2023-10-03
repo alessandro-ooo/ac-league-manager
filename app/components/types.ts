@@ -21,9 +21,14 @@ type TModelProps = {
     // texture: {map: Texture },
 }
 
+type TVehiclesProps = {
+    data: {name: string}[]
+}
+
 export type {
     TDialog,
     TInputProps,
     TNewUserForm,
-    TModelProps
+    TModelProps,
+    TVehiclesProps
 }
