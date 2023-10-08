@@ -11,7 +11,7 @@ datasource db {
 }
 
 model User {
-    id String @id
+    id String @id 
     name String @unique
     files File[]
 }
@@ -19,15 +19,15 @@ model User {
 model File {
     fid Int @id @default(autoincrement())
     name String @unique
-    users User @relation(fields: [uid], references: [id])
+    author User @relation(fields: [uid], references: [id])
     uid String
     texture String @unique
     cars Car[]
 }
 
 model Car {
+    cid Int @id @default(autoincrement())
     name String @unique
     folder String @unique
-    files File @relation(fields: [fileId], references: [fid])
-    fileId Int
+    liveries File[] 
 }
