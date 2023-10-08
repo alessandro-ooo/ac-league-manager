@@ -1,6 +1,6 @@
 import Vehicles from "@/app/components/dashboard/Vehicles";
 import { getUsernameCookie } from "@/app/libs/cookies/functions";
-import { getAllCars } from "@/app/libs/prisma/livery/function";
+import { getAllCars } from "@/app/libs/prisma/car/cars";
 
 const Dashboard = async () => {
     const usernameCookie = getUsernameCookie();
