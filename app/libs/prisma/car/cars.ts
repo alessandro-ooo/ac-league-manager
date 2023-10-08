@@ -4,22 +4,48 @@ import {
     Car
 } from "@prisma/client";
 
-const getAllCars = async (): Promise<{name: string, cid: number }[]> => {
+const getAllCars = async (discordid?: number): Promise<{name: string, cid: number, liveries: {fid: number, name: string}[] }[]> => {
     console.log("func getAllCars()");
 
     const result = await prisma.car.findMany({
         select: { 
             name: true,
-            cid: true
+            cid: true,
+            liveries: {
+                select: {
+                    fid: true,
+                    name: true
+                },
+                where: {
+                    author: {
+                        id: discordid?.toString()
+                    }
+                }
+            }
         }
     });
     return result;
 }
 
-const getCarLiveries = async () => {
-    
+const getCarLiveries = async (cid: number): Promise<{name: string; cars: {cid: number;}[];}[]> => {
+    const result = await prisma.file.findMany({
+        select: {
+            name: true,
+            cars: {
+                select: {
+                    cid: true,
+                },
+                where: {
+                    cid: cid
+                }
+            }
+        }        
+    });
+
+    return result;
 }
 
 export {
-    getAllCars
+    getAllCars,
+    getCarLiveries
 }
