@@ -9,6 +9,10 @@ const middleware = async (request: NextRequest) => {
     const discordid = request.cookies.get('discordid');
 
     if(request.nextUrl.pathname === '/dashboard') {
+        if(discordid === undefined) {
+            return NextResponse.redirect(new URL('/login', request.url));
+        }
+
         if(cookie === undefined) {
             return NextResponse.redirect(new URL('/login/new', request.url));
         }
@@ -24,6 +28,10 @@ const middleware = async (request: NextRequest) => {
     }
 
     if(request.nextUrl.pathname === '/login/new') {
+        if(discordid === undefined) {
+            return NextResponse.redirect(new URL('/login', request.url));
+        }
+        
         if(discordid != undefined && cookie != undefined) {
             return NextResponse.redirect(new URL('/dashboard', request.url));
         }
