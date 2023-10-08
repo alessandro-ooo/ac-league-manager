@@ -17,13 +17,17 @@ model User {
 }
 
 model File {
-    uid String
+    fid Int @id @default(autoincrement())
     name String @unique
     users User @relation(fields: [uid], references: [id])
+    uid String
     texture String @unique
+    cars Car[]
 }
 
 model Car {
     name String @unique
     folder String @unique
+    files File @relation(fields: [fileId], references: [fid])
+    fileId Int
 }
