@@ -6,7 +6,7 @@ const Vehicles = (props: TVehiclesProps) => {
     return (
         <div>
             {data.map((item, i) => {
-                return <a id={i.toString()}>{item.name}</a>
+                return <a id={item.cid.toString()}>{item.name}</a>
             })}
         </div>
     )
