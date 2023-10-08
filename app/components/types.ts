@@ -22,7 +22,10 @@ type TModelProps = {
 }
 
 type TVehiclesProps = {
-    data: {name: string}[]
+    data: {
+        name: string,
+        cid: number
+    }[]
 }
 
 export type {
