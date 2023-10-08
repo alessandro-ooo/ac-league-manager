@@ -24,7 +24,17 @@ type TModelProps = {
 type TVehiclesProps = {
     data: {
         name: string,
-        cid: number
+        cid: number,
+        liveries: {
+            fid: number
+            name: string;
+        }[]
+    }[]
+}
+
+type TLiveriesProps = {
+    data: {
+        name: string
     }[]
 }
 
@@ -33,5 +43,6 @@ export type {
     TInputProps,
     TNewUserForm,
     TModelProps,
-    TVehiclesProps
+    TVehiclesProps,
+    TLiveriesProps
 }
