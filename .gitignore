@@ -35,13 +35,7 @@ yarn-error.log*
 next-env.d.ts
 prisma/migrations/migration_lock.toml
 prisma/migrations/20230902221009_init/migration.sql
-*.dds
-public/models/testcar/2017body.png
-*.fbx
-*.ini
-public/models/testcar/texture/2017body.png
-todo
-todo
-public/models/testcar/texture/testt.png
-public/models/testcar/body.png
-public/models/testcar/body2.png
+
+
+# public
+/public
