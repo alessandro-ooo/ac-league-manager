@@ -1,4 +1,3 @@
-import { getCarLiveries } from "@/app/libs/prisma/car/cars";
 import { TLiveriesProps, TVehiclesProps } from "../types";
 import Image from 'next/image'
 

@@ -1,5 +1,4 @@
 import { ReactNode } from "react"
-import { Texture } from "three"
 
 type TDialog = {
     children: ReactNode
