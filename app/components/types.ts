@@ -26,15 +26,17 @@ type TVehiclesProps = {
         name: string,
         cid: number,
         liveries: {
-            fid: number
-            name: string;
+            fid: number,
+            name: string,
+            texture: string
         }[]
     }[]
 }
 
 type TLiveriesProps = {
     data: {
-        name: string
+        name: string,
+        texture: string
     }[]
 }
 
