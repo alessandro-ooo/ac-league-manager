@@ -19,7 +19,7 @@ model Livery {
     author User @relation(fields: [uid], references: [id])
     uid String
     texture String @unique
-    preview Json
+    preview String
     cars Car[]
 }
 
