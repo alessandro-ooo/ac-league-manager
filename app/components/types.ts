@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client"
 import { ReactNode } from "react"
 
 type TDialog = {
@@ -27,7 +28,7 @@ type TVehiclesProps = {
         liveries: {
             fid: number,
             name: string,
-            texture: string
+            preview: Prisma.JsonValue;
         }[]
     }[]
 }
