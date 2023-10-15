@@ -30,7 +30,6 @@ const Liveries = async (props: TLiveriesProps) => {
                 return (
                     <>
                         <a className="hover:bg-black hover:text-white">{item.name}</a>
-                        {/* <Image width={100} height={100} src={previews[0]} alt="hi"/> */}
                         {previews.forEach((previewImage: string, index: number) => {
                             <>
                                 <p>{previewImage}</p>
