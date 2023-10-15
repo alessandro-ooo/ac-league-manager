@@ -1,10 +1,16 @@
+import { JsonValue } from "@prisma/client/runtime/library";
 import prisma from "../../prismadb";
 import { 
-    File, 
-    Car
+    Livery, 
+    Car,
+    Prisma
 } from "@prisma/client";
+import { TVehiclesProps } from "@/app/components/types";
 
-const getAllCars = async (discordid?: number): Promise<{name: string, cid: number, liveries: {fid: number, name: string, texture: string}[] }[]> => {
+// Promise<{cid: number; name: string; liveries: { name: string; lid: number; preview: Prisma.JsonValue;}[];}[]>
+// : { cid: number; name: string;      liveries: { name: string; lid: number; preview: Prisma.JsonValue;}[];}[]
+
+const getAllCars = async (discordid?: number): Promise<{cid: number; name: string; liveries: { name: string; lid: number; preview: Prisma.JsonValue;}[];}[]> => {
     console.log("func getAllCars()");
 
     const result = await prisma.car.findMany({
@@ -13,9 +19,9 @@ const getAllCars = async (discordid?: number): Promise<{name: string, cid: numbe
             cid: true,
             liveries: {
                 select: {
-                    fid: true,
+                    lid: true,
                     name: true,
-                    texture: true,
+                    preview: true,
                 },
                 where: {
                     author: {
@@ -29,7 +35,7 @@ const getAllCars = async (discordid?: number): Promise<{name: string, cid: numbe
 }
 
 const getCarLiveries = async (cid: number): Promise<{name: string; cars: {cid: number;}[];}[]> => {
-    const result = await prisma.file.findMany({
+    const result = await prisma.livery.findMany({
         select: {
             name: true,
             cars: {
