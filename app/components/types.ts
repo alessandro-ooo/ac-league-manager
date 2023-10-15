@@ -28,7 +28,7 @@ type TVehiclesProps = {
         liveries: {
             fid: number,
             name: string,
-            preview: Prisma.JsonValue;
+            preview: string
         }[]
     }[]
 }
@@ -36,7 +36,7 @@ type TVehiclesProps = {
 type TLiveriesProps = {
     data: {
         name: string,
-        texture: string
+        preview: string
     }[]
 }
 
