@@ -28,15 +28,17 @@ const Liveries = async (props: TLiveriesProps) => {
             {data.map((item, i) => {
                 const previews = JSON.parse(item.preview);
                 return (
-                    <>
+                    <div>
                         <a className="hover:bg-black hover:text-white">{item.name}</a>
-                        {previews.forEach((previewImage: string, index: number) => {
-                            <>
-                                <p>{previewImage}</p>
-                                <Image width={100} height={100} src={previewImage} alt="hi"/>
-                            </>
+                        {previews.map((previewImage: string, p: any) => {
+                            return (
+                                <div>
+                                    <p>{previewImage}</p>
+                                    <Image width={100} height={100} src={previewImage} alt="hi"/>
+                                </div>
+                            )
                         })}
-                    </>
+                    </div>
                 )
             })}
         </div>
