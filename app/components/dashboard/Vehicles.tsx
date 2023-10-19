@@ -1,14 +1,18 @@
+
 import { TLiveriesProps, TVehiclesProps } from "../types";
 import Image from 'next/image'
+import VehicleData from "./VehicleData";
 
-const Vehicles = async (props: TVehiclesProps) => {
+const Vehicles = (props: TVehiclesProps) => {
+
     const { data } = props;
+    
     return (
         <div className="flex flex-col">
             {data.map((item, i) => {
                 return (
                     <div className="flex flex-col" key={i.toString()}>
-                        <a className="hover:bg-black hover:text-white" id={item.cid.toString()}>{item.name}</a>
+                        <VehicleData cid={item.cid.toString()} name={item.name}/>
                         <div className="">
                             <button>create livery</button>
                             <Liveries data={item.liveries} />                     
