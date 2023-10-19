@@ -21,6 +21,11 @@ type TModelProps = {
     // texture: {map: Texture },
 }
 
+type TVehicleDataProps = {
+    cid: string,
+    name: string
+}
+
 type TVehiclesProps = {
     data: {
         name: string,
@@ -45,6 +50,7 @@ export type {
     TInputProps,
     TNewUserForm,
     TModelProps,
+    TVehicleDataProps,
     TVehiclesProps,
     TLiveriesProps
 }
