@@ -2,7 +2,7 @@
 import { TVehicleDataProps } from "../types"
 
 const handleClick = () => {
-    return console.log("tba");
+    return <p>d</p>
 }
 
 const VehicleData = async (props: TVehicleDataProps) => {

@@ -12,10 +12,10 @@ const Vehicles = (props: TVehiclesProps) => {
             {data.map((item, i) => {
                 return (
                     <div className="flex flex-col" key={i.toString()}>
-                        <VehicleData cid={item.cid.toString()} name={item.name}/>
+                        <p>{item.name}</p>
                         <div className="">
                             <button>create livery</button>
-                            <Liveries data={item.liveries} />                     
+                            <Liveries data={item.liveries} />
                         </div>
                     </div>
                 )
@@ -30,18 +30,20 @@ const Liveries = async (props: TLiveriesProps) => {
     return (
         <div className="flex flex-col">
             {data.map((item, i) => {
-                const previews = JSON.parse(item.preview);
+                // const previews = JSON.parse(item.preview);
                 return (
                     <div>
-                        <a className="hover:bg-black hover:text-white">{item.name}</a>
-                        {previews.map((previewImage: string, p: any) => {
+                        <VehicleData cid="1" name={item.name}/>
+                        {/* <a className="hover:bg-black hover:text-white">{item.name}</a> */}
+                        {/* <VehicleData cid="1" name={item-na} /> */}
+                        {/* {previews.map((previewImage: string, p: any) => {
                             return (
                                 <div>
                                     <p>{previewImage}</p>
                                     <Image width={100} height={100} src={previewImage} alt="hi"/>
                                 </div>
                             )
-                        })}
+                        })} */}
                     </div>
                 )
             })}
