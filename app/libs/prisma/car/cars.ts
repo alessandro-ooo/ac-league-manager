@@ -10,7 +10,8 @@ import { TVehiclesProps } from "@/app/components/types";
 // Promise<{cid: number; name: string; liveries: { name: string; lid: number; preview: Prisma.JsonValue;}[];}[]>
 // : { cid: number; name: string;      liveries: { name: string; lid: number; preview: Prisma.JsonValue;}[];}[]
 
-const getAllCars = async (discordid?: number): Promise<{cid: number; name: string; liveries: { name: string; lid: number; preview: Prisma.JsonValue;}[];}[]> => {
+const getAllCars = async (discordid?: number): Promise<{cid: number; name: string; liveries: { name: string; lid: number; preview: string; }[];
+}[]> => {
     console.log("func getAllCars()");
 
     const result = await prisma.car.findMany({
