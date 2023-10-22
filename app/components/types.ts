@@ -31,7 +31,7 @@ type TVehiclesProps = {
         name: string,
         cid: number,
         liveries: {
-            fid: number,
+            lid: number,
             name: string,
             preview: string
         }[]
