@@ -1,4 +1,5 @@
 import Vehicles from "@/app/components/dashboard/Vehicles";
+import Viewer from "@/app/components/dashboard/Viewer";
 import { getUsernameCookie } from "@/app/libs/cookies/functions";
 import { getAllCars } from "@/app/libs/prisma/car/cars";
 
@@ -19,7 +20,7 @@ const Dashboard = async ({ params }: { params: { id: string } }) => {
 
             {params.id != undefined && 
                 <div>
-                    <p>{params.id}</p>
+                    <Viewer lid={parseInt(params.id)} />
                 </div>
             }
         </div>
