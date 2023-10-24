@@ -6,12 +6,22 @@ const Dashboard = async ({ params }: { params: { id: string } }) => {
     const usernameCookie = getUsernameCookie();
     const vehicles = await getAllCars();
 
-    console.log(params.id);
     return(
         <div>
             <p>welcome {usernameCookie}</p>
             <Vehicles data={vehicles} />
-            <p>slug: {params.id}</p>
+            
+            {params.id === undefined && 
+                <div>
+                    <p>click something</p>
+                </div>
+            }
+
+            {params.id != undefined && 
+                <div>
+                    <p>{params.id}</p>
+                </div>
+            }
         </div>
     )
 }
