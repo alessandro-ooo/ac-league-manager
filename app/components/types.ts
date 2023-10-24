@@ -22,7 +22,7 @@ type TModelProps = {
 }
 
 type TVehicleDataProps = {
-    cid: string,
+    lid: number,
     name: string
 }
 
@@ -41,8 +41,13 @@ type TVehiclesProps = {
 type TLiveriesProps = {
     data: {
         name: string,
+        lid: number,
         preview: string
     }[]
+}
+
+type ViewerProps = {
+    lid: number;
 }
 
 export type {
@@ -52,5 +57,6 @@ export type {
     TModelProps,
     TVehicleDataProps,
     TVehiclesProps,
-    TLiveriesProps
+    TLiveriesProps,
+    ViewerProps
 }
