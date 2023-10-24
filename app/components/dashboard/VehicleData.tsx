@@ -1,13 +1,11 @@
 "use client"
+import { useRouter } from "next/navigation";
 import { TVehicleDataProps } from "../types"
 
-const handleClick = () => {
-    return <p>d</p>
-}
-
-const VehicleData = async (props: TVehicleDataProps) => {
+const VehicleData = (props: TVehicleDataProps) => {
+    const router = useRouter();
     const {cid, name} = props;
-    return <div onClick={handleClick} className="hover:bg-black hover:text-white" id={cid}>{name}</div>
+    return <div onClick={(cid) => router.push('/dashboard/' + cid.currentTarget.id)} className="hover:bg-black hover:text-white" id={cid}>{name}</div>
 }
 
 export default VehicleData;
