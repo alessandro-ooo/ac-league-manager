@@ -15,10 +15,9 @@ TBE.
 [User flowchart](https://www.figma.com/file/dcvxLsiOR3HKLEWQKoFB8z/Flowchart?type=whiteboard&node-id=0%3A1&t=F6iDE9BTTKWH9afX-1)
 
 # Authors
-##Contributors names and contact info
 
 Alessandro Buonocore
-Github - [alessandro-oooo](https://github.com/alessandro-ooo)
-Telegram - [@fuckitwebounce](t.me/fuckitwebounce)
-Discord - [alessandroooo_] 
+* Github - [alessandro-oooo](https://github.com/alessandro-ooo)
+* Telegram - [@fuckitwebounce](t.me/fuckitwebounce)
+* Discord - [alessandroooo_] 
 
