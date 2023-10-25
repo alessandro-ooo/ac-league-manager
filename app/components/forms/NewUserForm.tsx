@@ -4,8 +4,6 @@ import { useForm } from 'react-hook-form';
 import { TNewUserForm } from '../types';
 import { useSession } from "next-auth/react"
 import Input from '../Input';
-import { useEffect } from 'react';
-import { redirect } from 'next/navigation';
 const NewUserForm = () => {
     
     const { data: session } = useSession();
