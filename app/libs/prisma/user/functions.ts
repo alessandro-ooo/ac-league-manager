@@ -1,7 +1,7 @@
 import prisma from "../../prismadb";
 import { User } from "@prisma/client";
 
-const checkUser = async (id: string | undefined): Promise<{ id: string; name: string; } | null> => {
+const checkUser = async (id: string | undefined): Promise<{ id: string; name: string; steamid: number} | null> => {
     console.log("func checkuser(" + id + ")");
     const result = await prisma.user.findUnique({
         where: {
@@ -17,7 +17,8 @@ const createUser = async (id: string, name: string): Promise<User> => {
     const result = await prisma.user.create({
         data: {
             id: id,
-            name: name
+            name: name,
+            steamid: 0 // 0 = no id set
         }
     });
 
@@ -37,8 +38,37 @@ const updateUserName = async (to: string, from: string): Promise<void> => {
     });
 }
 
+const updateUserSteamID = async (id: string, to: number): Promise<void> => {
+    const result = await prisma.user.update({
+        where: {
+            id: id
+        },
+
+        data: {
+            steamid: to
+        }
+    });
+}
+
+const getSteamID = async (id: string) => {
+
+    const result = await prisma.user.findUnique({
+        where: {
+            id: id,
+        },
+
+        select: {
+            steamid: true
+        }
+    });
+
+    return result;
+}
+
 export {
     checkUser,
     createUser,
-    updateUserName
+    updateUserName,
+    updateUserSteamID,
+    getSteamID
 }
