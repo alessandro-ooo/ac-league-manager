@@ -10,19 +10,21 @@ const Dashboard = async ({ params }: { params: { id: string } }) => {
     return(
         <div>
             <p>welcome {usernameCookie}</p>
-            <Vehicles data={vehicles} />
-            
-            {params.id === undefined && 
-                <div>
-                    <p>click something</p>
-                </div>
-            }
+            <div className="flex flex-row">
+                <Vehicles data={vehicles} />
+                
+                {params.id === undefined && 
+                    <div>
+                        <p>click something</p>
+                    </div>
+                }
 
-            {params.id != undefined && 
-                <div>
-                    <Viewer lid={parseInt(params.id)} />
-                </div>
-            }
+                {params.id != undefined && 
+                    <div>
+                        <Viewer lid={parseInt(params.id)} />
+                    </div>
+                }
+            </div>
         </div>
     )
 }
