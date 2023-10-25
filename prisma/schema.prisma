@@ -11,6 +11,7 @@ model User {
     id String @id 
     name String @unique
     liveries Livery[]
+    steamid Int
 }
 
 model Livery {
