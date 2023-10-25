@@ -53,10 +53,11 @@ const getCarLiveries = async (cid: number): Promise<{name: string; cars: {cid: n
     return result;
 }
 
-const getLivery = async (lid: number): Promise<{ name: string; lid: number; preview: string; } | null> => {
+const getLivery = async (lid: number): Promise<{ uid: string, name: string; lid: number; preview: string; } | null> => {
 
     const result = await prisma.livery.findUnique({
         select: {
+            uid: true,
             name: true,
             lid: true,
             preview: true,
