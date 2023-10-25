@@ -50,6 +50,13 @@ type ViewerProps = {
     lid: number;
 }
 
+
+type TUserSettingsForm = {
+    name: string,
+    steamid: number,
+    id: string
+}
+
 export type {
     TDialog,
     TInputProps,
@@ -58,5 +65,6 @@ export type {
     TVehicleDataProps,
     TVehiclesProps,
     TLiveriesProps,
-    ViewerProps
+    ViewerProps,
+    TUserSettingsForm
 }
