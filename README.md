@@ -19,5 +19,5 @@ TBE.
 Alessandro Buonocore
 * Github - [alessandro-oooo](https://github.com/alessandro-ooo)
 * Telegram - [@fuckitwebounce](t.me/fuckitwebounce)
-* Discord - [alessandroooo_] 
+* Discord - alessandroooo_ 
 
