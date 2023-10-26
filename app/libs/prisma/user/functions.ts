@@ -27,7 +27,7 @@ const createUser = async (id: string, name: string): Promise<User> => {
 
 const updateUserName = async (to: string, from: string): Promise<void> => {
     console.log("func updateUserName(" + to + ", " + from +")");
-    const result = await prisma.user.update({
+    await prisma.user.update({
         where: {
             name: from
         },
@@ -37,9 +37,8 @@ const updateUserName = async (to: string, from: string): Promise<void> => {
         }
     });
 }
-
 const updateUserSteamID = async (id: string, to: number): Promise<void> => {
-    const result = await prisma.user.update({
+    await prisma.user.update({
         where: {
             id: id
         },
