@@ -8,7 +8,7 @@ const Settings = async ({ params }: { params: { id: string } }) => {
     const userData = await checkUser(params.id.toString());
 
     return (
-        <UserSettingsForm name={userData!.name} steamid={userData!.steamid} id={params.id} />
+        <UserSettingsForm currentName={userData!.name} name={userData!.name} steamid={userData!.steamid} id={params.id} />
     )
 }
 
