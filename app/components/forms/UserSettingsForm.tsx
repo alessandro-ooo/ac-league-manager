@@ -18,6 +18,8 @@ const UserSettingsForm = (props: TUserSettingsForm) => {
         formState: { errors }
     } = useForm<TUserSettingsForm>({
         defaultValues: {
+            id: id,
+            currentName: name,
             name: name,
             steamid: steamid,
         }
@@ -27,7 +29,23 @@ const UserSettingsForm = (props: TUserSettingsForm) => {
     return (
         <form 
             onSubmit={handleSubmit(async (data) => {
-                updateUserSteamID(id, data.steamid);
+                const updateSteamID = await fetch('/api/updateSteamID', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const updateName = await fetch('/api/updateUsername', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+
             }
         )}>
             <div className='flex flex-col'>
