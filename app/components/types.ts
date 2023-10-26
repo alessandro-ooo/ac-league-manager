@@ -53,6 +53,7 @@ type ViewerProps = {
 
 type TUserSettingsForm = {
     name: string,
+    currentName: string,
     steamid: number,
     id: string
 }
