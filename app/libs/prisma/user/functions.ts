@@ -1,7 +1,7 @@
 import prisma from "../../prismadb";
 import { User } from "@prisma/client";
 
-const checkUser = async (id: string | undefined): Promise<{ id: string; name: string; steamid: number} | null> => {
+const checkUser = async (id: string | undefined): Promise<{ id: string; name: string; steamid: bigint} | null> => {
     console.log("func checkuser(" + id + ")");
     const result = await prisma.user.findUnique({
         where: {
@@ -61,7 +61,7 @@ const getSteamID = async (id: string) => {
         }
     });
 
-    return result;
+    return Number(result?.steamid);
 }
 
 export {
