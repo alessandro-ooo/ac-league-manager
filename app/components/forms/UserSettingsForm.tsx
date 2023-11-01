@@ -50,11 +50,11 @@ const UserSettingsForm = (props: TUserSettingsForm) => {
         )}>
             <div className='flex flex-col'>
                 <Input type="input" label="Username assigned to this account" placeholder={name} {...register("name", { required: true, minLength: 2, maxLength: 20})}/>
-                {steamid == 0 && 
+                {Number(steamid) == 0 && 
                     <Input type="input" label="Steamid" placeholder="Add your steamid here" {...register("steamid", { required: true, minLength: 2, maxLength: 20})}/>
                 }
 
-                {steamid != 0 && 
+                {Number(steamid) != 0 && 
                     <Input type="input" label="Steamid" placeholder={steamid.toString()} {...register("steamid", { required: true, minLength: 2, maxLength: 20})}/>
                 }
 
