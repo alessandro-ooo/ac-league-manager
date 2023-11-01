@@ -3,6 +3,7 @@ import { ViewerProps } from "../types";
 import { cookies } from 'next/headers'
 import Image from 'next/image'
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
+import Link from "next/link";
 
 const Viewer = async (props: ViewerProps) => {
     const { lid } = props;
@@ -26,7 +27,12 @@ const Viewer = async (props: ViewerProps) => {
             
             <button id={lid.toString()}>use livery</button>
             {discordId.value == livery!.uid && 
-                <button id={lid.toString()}>delete livery</button>
+                <div>
+                    <button id={lid.toString()}>delete livery</button>
+                    <Link href={"/edit/" + lid}> 
+                        <button id={lid.toString()}>edit livery</button>
+                    </Link>
+                </div>
             }
         </div>
     )
