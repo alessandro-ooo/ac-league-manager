@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation'
 const Edit = async ({ params }: { params: { lid: string } }) => {
     const discordid = cookies().get('discordid');
     const userSteamID = await getSteamID(discordid?.value as string) ;
+    
 
     if(userSteamID == 0) {
         return redirect('/settings/' + discordid?.value);

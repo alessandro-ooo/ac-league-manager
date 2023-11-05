@@ -70,6 +70,13 @@ const getLivery = async (lid: number): Promise<{ uid: string, name: string; lid:
     return result;
 }
 
+const filter = async () => {
+
+    const result = await prisma.livery.findMany({
+        
+    });
+}
+
 export {
     getAllCars,
     getCarLiveries,
