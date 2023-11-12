@@ -16,6 +16,11 @@ type TNewUserForm = {
     id: string,
 }
 
+type TFiltersForm = {
+    carName: string
+    author?: string
+}
+
 type TModelProps = {
     dir: string,
     // texture: {map: Texture },
@@ -62,6 +67,7 @@ export type {
     TDialog,
     TInputProps,
     TNewUserForm,
+    TFiltersForm,
     TModelProps,
     TVehicleDataProps,
     TVehiclesProps,
