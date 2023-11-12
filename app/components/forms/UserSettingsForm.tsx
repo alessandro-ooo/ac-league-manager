@@ -29,7 +29,7 @@ const UserSettingsForm = (props: TUserSettingsForm) => {
     return (
         <form 
             onSubmit={handleSubmit(async (data) => {
-                const updateSteamID = await fetch('/api/updateSteamID', {
+                await fetch('/api/updateSteamID', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ const UserSettingsForm = (props: TUserSettingsForm) => {
                     body: JSON.stringify(data)
                 });
 
-                const updateName = await fetch('/api/updateUsername', {
+                await fetch('/api/updateUsername', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -57,7 +57,6 @@ const UserSettingsForm = (props: TUserSettingsForm) => {
                 {Number(steamid) != 0 && 
                     <Input type="input" label="Steamid" placeholder={steamid.toString()} {...register("steamid", { required: true, minLength: 2, maxLength: 20})}/>
                 }
-
                 <input type="submit" />
             </div>
         </form>
