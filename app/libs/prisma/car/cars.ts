@@ -70,15 +70,40 @@ const getLivery = async (lid: number): Promise<{ uid: string, name: string; lid:
     return result;
 }
 
-const filter = async () => {
 
-    const result = await prisma.livery.findMany({
-        
+const filter = async (carName: string, author_filter?: string) => {
+    const result = await prisma.car.findMany({
+        where: {
+            name: carName
+        },
+
+        select: {
+            cid: true,
+            name: true,
+            liveries: {
+                select: {
+                    name: true,
+                    lid: true,
+                    author: true,
+                },
+
+                where: {
+                    ...(author_filter != undefined ? {
+                        author: {
+                            name: author_filter
+                        } 
+                    } : {})                    
+                }
+            }
+        },
     });
+
+    return result[0].liveries;
 }
 
 export {
     getAllCars,
     getCarLiveries,
-    getLivery
+    getLivery,
+    filter
 }
