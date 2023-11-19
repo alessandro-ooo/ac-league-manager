@@ -7,7 +7,7 @@ const Explore = async ({ params }: { params: { slug: string } }) => {
     const livery = await filter(params.slug[0], params.slug[1]);
     return (
         <div>
-            <FiltersForm />
+            <FiltersForm carNameSlug={params.slug[0]} liveryAuthor={params.slug[1]} />
 
             {livery.map((item, i) => {
 
