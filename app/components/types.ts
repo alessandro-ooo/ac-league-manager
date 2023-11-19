@@ -21,6 +21,11 @@ type TFiltersForm = {
     author?: string
 }
 
+type TFilterFormProps = {
+    carNameSlug: string
+    liveryAuthor?: string
+}
+
 type TModelProps = {
     dir: string,
     // texture: {map: Texture },
@@ -73,5 +78,6 @@ export type {
     TVehiclesProps,
     TLiveriesProps,
     ViewerProps,
-    TUserSettingsForm
+    TUserSettingsForm,
+    TFilterFormProps
 }
