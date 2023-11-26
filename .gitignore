@@ -26,6 +26,8 @@ Web/yarn-error.log*
 
 # local env files
 Web/env*.local
+Web/*.env
+Web/.env
 
 # vercel
 Web/.vercel
