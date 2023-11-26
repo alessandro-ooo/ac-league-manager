@@ -1,6 +1,11 @@
 import prisma from "../../prismadb";
 import { User } from "@prisma/client";
 
+const userCount = async (): Promise<number> => {
+    const userCount = await prisma.user.count();
+    return userCount;
+}
+
 const checkUser = async (id: string | undefined): Promise<{ id: string; name: string; steamid: bigint} | null> => {
     console.log("func checkuser(" + id + ")");
     const result = await prisma.user.findUnique({
@@ -12,13 +17,14 @@ const checkUser = async (id: string | undefined): Promise<{ id: string; name: st
     return result;
 }
 
-const createUser = async (id: string, name: string): Promise<User> => {
+const createUser = async (id: string, name: string, admin?: number): Promise<User> => {
     console.log("func createUser(" + id + ", " + name +")");
     const result = await prisma.user.create({
         data: {
             id: id,
             name: name,
-            steamid: 0 // 0 = no id set
+            steamid: 0, // 0 = no id set
+            admin: (admin == undefined ? 0 : admin)
         }
     });
 
@@ -69,5 +75,6 @@ export {
     createUser,
     updateUserName,
     updateUserSteamID,
-    getSteamID
+    getSteamID,
+    userCount
 }

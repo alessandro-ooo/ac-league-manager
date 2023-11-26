@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { TNewUserForm } from '../types';
 import { useSession } from "next-auth/react"
 import Input from '../Input';
+import { createUser, userCount } from '@/app/libs/prisma/user/functions';
+
 const NewUserForm = () => {
     
     const { data: session } = useSession();
@@ -22,7 +24,6 @@ const NewUserForm = () => {
     return (
         <form onSubmit={handleSubmit(async (data) => {
             data.id = session?.user?.id as string;
-
             const res = await fetch('/api/user', {
                 method: 'POST',
                 headers: {

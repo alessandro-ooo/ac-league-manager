@@ -12,6 +12,7 @@ model User {
     name String @unique
     liveries Livery[]
     steamid BigInt
+    admin Int
 }
 
 model Livery {

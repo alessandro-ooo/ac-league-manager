@@ -1,5 +1,5 @@
 import { 
-    createUser 
+    createUser, userCount 
 } from "@/app/libs/prisma/user/functions";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -11,7 +11,8 @@ import {
 
 export async function POST (request: NextRequest) {
     const data = await request.json();
-    const user = await createUser(data.id, data.username);
+    const count: number = await userCount();
+    const user = await createUser(data.id, data.username, (count == 0 ? 2 : 0));
     
     if(user) {
         cookies().set('username', user.name);
