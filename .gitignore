@@ -1,2 +1,41 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-Web/.env
+# dependencies
+Web/node_modules
+Web/.pnp
+Web/.pnp.js
+
+# testing
+Web/coverage
+
+# next.js
+Web/.next/
+Web/out/
+
+# production
+Web/build
+
+# misc
+Web/.DS_Store
+Web/*.pem
+
+# debug
+Web/npm-debug.log*
+Web/yarn-debug.log*
+Web/yarn-error.log*
+
+# local env files
+Web/env*.local
+
+# vercel
+Web/.vercel
+
+# typescript
+Web/*.tsbuildinfo
+Web/next-env.d.ts
+Web/prisma/migrations/migration_lock.toml
+Web/prisma/migrations/20230902221009_init/migration.sql
+
+
+# public
+Web/public
