@@ -55,7 +55,9 @@ export const authOptions: NextAuthOptions = {
                 const userid = await checkUser(user.id);
 
                 if(userid) {
+                    // exists and is logging in
                     cookies().set('username', user.name);
+                    cookies().set('admin', (userid.admin.toString()));
                 }
             }
             return true
@@ -63,7 +65,7 @@ export const authOptions: NextAuthOptions = {
     },
 
     secret: process.env.NEXTAUTH_SECRET,
-    debug: process.env.NODE_ENV === "development"
+    // debug: process.env.NODE_ENV === "development"
 }
 const handler = NextAuth(authOptions);
 
