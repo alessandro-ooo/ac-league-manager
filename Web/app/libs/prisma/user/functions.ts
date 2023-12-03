@@ -6,7 +6,7 @@ const userCount = async (): Promise<number> => {
     return userCount;
 }
 
-const checkUser = async (id: string | undefined): Promise<{ id: string; name: string; steamid: bigint} | null> => {
+const checkUser = async (id: string | undefined): Promise<{ id: string; name: string; steamid: bigint, admin: number} | null> => {
     console.log("func checkuser(" + id + ")");
     const result = await prisma.user.findUnique({
         where: {

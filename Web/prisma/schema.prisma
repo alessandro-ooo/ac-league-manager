@@ -31,3 +31,9 @@ model Car {
     folder String @unique
     liveries Livery[] 
 }
+
+model ServerCFG {
+    type String @id
+    field String
+    value String
+}
