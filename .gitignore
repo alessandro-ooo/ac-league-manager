@@ -41,3 +41,4 @@ Web/prisma/migrations/20230902221009_init/migration.sql
 
 # public
 Web/public
+Web/prisma/migrations/20231203160123_initial_state/migration.sql
