@@ -16,43 +16,46 @@ type TNewUserForm = {
     id: string,
 }
 
-type TServerSettingsForm = {
-    name: string,
-    cars: string,
-    config_track: string,
-    track: string,
-    sun_angle: number,
-    password: string,
-    admin_password: string,
-    udp_port: number,
-    tcp_port: number,
-    http_port: number,
-    pickup_mode_enabled: number,
-    loop_mode: number,
-    sleep_time: number,
-    client_send_interval_hz: number,
-    send_buffer_size: number,
-    recv_buffer_size: number,
-    race_over_time: number,
-    kick_quorum: number,
-    vote_duration: number,
-    blacklist_mode: number,
-    fuel_rate: number,
-    damage_multiplier: number,
-    tyre_wear_rate: number,
-    abs_allowed: number,
-    tc_allowed: number,
-    stability_allowed: number,
-    autoclutch_allowed: number,
-    tyre_blankets_allowed: number,
-    force_virtual_mirror: number,
-    register_to_lobby: number,
-    max_clients: number,
-    udp_plugin_local_port: number,
-    udp_plugin_address: string,
-    auth_plugin_address: string,
-    legal_tyres: string
+type TServerSettingFormProps = {
+    settings: string
 }
+type TServerSettings = {
+    NAME: string;
+    CARS: string;
+    CONFIG_TRACK: string;
+    TRACK: string;
+    SUN_ANGLE: number;
+    PASSWORD: string;
+    ADMIN_PASSWORD: string;
+    UDP_PORT: number;
+    TCP_PORT: number;
+    HTTP_PORT: number;
+    PICKUP_MODE_ENABLED: number;
+    LOOP_MODE: number;
+    SLEEP_TIME: number;
+    CLIENT_SEND_INTERVAL_HZ: number;
+    SEND_BUFFER_SIZE: number;
+    RECV_BUFFER_SIZE: number;
+    RACE_OVER_TIME: number;
+    KICK_QUORUM: number;
+    VOTE_DURATION: number;
+    BLACKLIST_MODE: number;
+    FUEL_RATE: number;
+    DAMAGE_MULTIPLIER: number;
+    TYRE_WEAR_RATE: number;
+    ABS_ALLOWED: number;
+    TC_ALLOWED: number;
+    STABILITY_ALLOWED: number;
+    AUTOCLUTCH_ALLOWED: number;
+    TYRE_BLANKETS_ALLOWED: number;
+    FORCE_VIRTUAL_MIRROR: number;
+    REGISTER_TO_LOBBY: number;
+    MAX_CLIENTS: number;
+    UDP_PLUGIN_LOCAL_PORT: number;
+    UDP_PLUGIN_ADDRESS: string;
+    AUTH_PLUGIN_ADDRESS: string;
+    LEGAL_TYRES: string;
+};
 
 type TFiltersForm = {
     carName: string
@@ -110,7 +113,8 @@ export type {
     TDialog,
     TInputProps,
     TNewUserForm,
-    TServerSettingsForm,
+    TServerSettings,
+    TServerSettingFormProps,
     TFiltersForm,
     TModelProps,
     TVehicleDataProps,
