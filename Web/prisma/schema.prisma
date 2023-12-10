@@ -33,7 +33,6 @@ model Car {
 }
 
 model ServerCFG {
-    type String @id
-    field String
+    field String @id
     value String
 }
