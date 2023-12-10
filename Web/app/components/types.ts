@@ -17,7 +17,10 @@ type TNewUserForm = {
 }
 
 type TServerSettingFormProps = {
-    settings: string
+    settings: {
+        field: string;
+        value: string;
+    }[]
 }
 type TServerSettings = {
     NAME: string;
