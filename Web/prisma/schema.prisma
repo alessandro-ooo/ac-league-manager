@@ -1,3 +1,5 @@
+
+
 generator client {
     provider = "prisma-client-js"
 }
@@ -35,4 +37,24 @@ model Car {
 model ServerCFG {
     field String @id
     value String
+}
+
+model Race {
+    id Int @id @default(autoincrement())
+    race String
+    drivers Driver[]
+}
+
+model Driver {
+    // This model tracks down whoever has signed in a race.
+    id Int @id
+    race Race @relation(fields: [raceId], references: [id])
+    raceId Int
+    model String
+    skin String
+    spectator Int
+    name String
+    team String?
+    guid String?
+    ballast Int?
 }

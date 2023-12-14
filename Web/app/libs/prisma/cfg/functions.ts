@@ -3,11 +3,10 @@ import prisma from "../../prismadb";
 import { TServerSettings } from "@/app/components/types";
 
 const updateCFG = async (data: any) => {
-
     for (const key in data) {
         const keyValue = data[key];
         
-        const upd = await prisma.serverCFG.update({ 
+        await prisma.serverCFG.update({ 
             where: { field: key },
             data: {value: keyValue}
         });
