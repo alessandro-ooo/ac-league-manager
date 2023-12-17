@@ -43,6 +43,7 @@ model Race {
     id Int @id @default(autoincrement())
     race String
     drivers Driver[]
+    datetime DateTime
 }
 
 model Driver {
