@@ -2,6 +2,17 @@ import { Prisma } from "@prisma/client";
 import prisma from "../../prismadb";
 import { TServerSettings } from "@/app/components/types";
 
+const createRace = async (race: string, date: string) => {
+    const result = await prisma.race.create({
+        data: {
+            race: race,
+            datetime: new Date(date)
+        }
+    });
+
+    return result;
+}
+
 const updateCFG = async (data: any) => {
     for (const key in data) {
         const keyValue = data[key];
@@ -73,5 +84,6 @@ export {
     checkCFG,
     inject,
     getAllFields,
-    updateCFG
+    updateCFG,
+    createRace
 }
