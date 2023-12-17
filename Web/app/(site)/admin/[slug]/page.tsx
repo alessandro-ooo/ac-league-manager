@@ -1,3 +1,4 @@
+import RaceSettingsForm from "@/app/components/forms/RaceSettingsForm";
 import ServerSettingsForm from "@/app/components/forms/ServerSettingsForm"
 import { getAllFields } from "@/app/libs/prisma/cfg/functions";
 import { promises as fs } from 'fs';
@@ -10,7 +11,11 @@ const Admin = async ({ params }: { params: { slug: string } }) => {
         return (
             <ServerSettingsForm settings={data}/>
         )
-    } 
+    }
+
+    if(params.slug == "race") {
+        return <RaceSettingsForm />
+    }
 } 
 
 export default Admin

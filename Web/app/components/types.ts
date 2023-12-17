@@ -22,6 +22,12 @@ type TServerSettingFormProps = {
         value: string;
     }[]
 }
+
+type TRaceSettings = {
+    race: string;
+    datetime: string;
+}
+
 type TServerSettings = {
     NAME: string;
     CARS: string;
@@ -117,6 +123,7 @@ export type {
     TInputProps,
     TNewUserForm,
     TServerSettings,
+    TRaceSettings,
     TServerSettingFormProps,
     TFiltersForm,
     TModelProps,
