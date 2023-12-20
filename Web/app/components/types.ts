@@ -28,6 +28,14 @@ type TRaceSettings = {
     datetime: string;
 }
 
+type TRaceProps = {
+    data: {
+        id: number;
+        race: string;
+        datetime: Date;
+    }[]
+}
+
 type TServerSettings = {
     NAME: string;
     CARS: string;
@@ -132,5 +140,6 @@ export type {
     TLiveriesProps,
     ViewerProps,
     TUserSettingsForm,
-    TFilterFormProps
+    TFilterFormProps,
+    TRaceProps,
 }
