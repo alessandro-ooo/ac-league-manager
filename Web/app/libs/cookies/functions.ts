@@ -12,7 +12,13 @@ const getUsernameCookie = () => {
     return cUsername?.value;
 }
 
+const getAdminCookie = () => {
+    const cAdmin = cookies().get("admin");
+    return cAdmin?.value;
+}
+
 export {
     setUsernameCookie,
-    getUsernameCookie
+    getUsernameCookie,
+    getAdminCookie
 }

@@ -13,6 +13,11 @@ const createRace = async (race: string, date: string) => {
     return result;
 }
 
+const getAllRaces = async () => {
+    const result = await prisma.race.findMany({});
+    return result;
+}
+
 const updateCFG = async (data: any) => {
     for (const key in data) {
         const keyValue = data[key];
@@ -85,5 +90,6 @@ export {
     inject,
     getAllFields,
     updateCFG,
-    createRace
+    createRace,
+    getAllRaces
 }
