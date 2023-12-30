@@ -23,7 +23,10 @@ const Race = (props: TRaceProps) => {
                     <div key={item.id}>
                         <p>{item.race}</p>
                         {Number(isAdmin) > 0 &&
-                            <button onClick={() => clickButton(item.id)}>Start server</button>
+                            <div>
+                                <button onClick={() => clickButton(item.id)}>Start server</button>
+                                <button onClick={() => clickButton(item.id)}>Edit server</button>
+                            </div>
                         }
                     </div>
                 )
