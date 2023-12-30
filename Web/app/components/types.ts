@@ -24,6 +24,7 @@ type TServerSettingFormProps = {
 }
 
 type TRaceSettings = {
+    id: number;
     race: string;
     datetime: string;
 }
