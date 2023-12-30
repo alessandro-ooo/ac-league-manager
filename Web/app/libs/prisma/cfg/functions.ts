@@ -13,9 +13,47 @@ const createRace = async (race: string, date: string) => {
     return result;
 }
 
+const getRace = async (id: number) => {
+    const result = await prisma.race.findUnique({where: {id: id}});
+    return result;
+}
+
+const getRaceDrivers = async (id: number): Promise<{
+    id: number;
+    raceId: number;
+    model: string;
+    skin: string;
+    spectator: number;
+    name: string;
+    team: string | null;
+    guid: string | null;
+    ballast: number | null;
+}[]> => {
+    const result = await prisma.driver.findMany({
+        where: {
+            raceId: id
+        }
+    });
+
+    return result;
+}
+
 const getAllRaces = async () => {
     const result = await prisma.race.findMany({});
     return result;
+}
+
+const updateRace = async (id: number, race: string, datetime: string): Promise<void> => {
+    await prisma.race.update({
+        where: {
+            id: id
+        },
+
+        data: {
+            race: race,
+            datetime: new Date(datetime)
+        }
+    });
 }
 
 const updateCFG = async (data: any) => {
@@ -91,5 +129,8 @@ export {
     getAllFields,
     updateCFG,
     createRace,
-    getAllRaces
+    getAllRaces,
+    getRace,
+    getRaceDrivers,
+    updateRace
 }
