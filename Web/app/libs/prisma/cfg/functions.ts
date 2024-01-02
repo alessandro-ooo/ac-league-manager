@@ -18,17 +18,7 @@ const getRace = async (id: number) => {
     return result;
 }
 
-const getRaceDrivers = async (id: number): Promise<{
-    id: number;
-    raceId: number;
-    model: string;
-    skin: string;
-    spectator: number;
-    name: string;
-    team: string | null;
-    guid: string | null;
-    ballast: number | null;
-}[]> => {
+const getRaceDrivers = async (id: number) => {
     const result = await prisma.driver.findMany({
         where: {
             raceId: id
