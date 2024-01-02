@@ -29,6 +29,30 @@ type TRaceSettings = {
     datetime: string;
 }
 
+type TRosterProps = {
+    rid: number;
+}
+
+type TDrivers = {
+    drivers: {
+        id: number;
+        raceId: number;
+        model: string;
+        skin: string;
+        spectator: number;
+        name: string;
+        team: string | null;
+        guid: string | null;
+        ballast: number | null;
+    }[]
+}
+
+type TDriverProps = {
+    name: string,
+    car?: string
+}
+
+
 type TRaceProps = {
     data: {
         id: number;
@@ -143,4 +167,7 @@ export type {
     TUserSettingsForm,
     TFilterFormProps,
     TRaceProps,
+    TRosterProps,
+    TDrivers,
+    TDriverProps
 }
