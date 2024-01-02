@@ -1,4 +1,5 @@
 import EditRaceSettingsForm from "@/app/components/forms/EditRaceSettingsForm";
+import Roster from "@/app/components/race/Roster";
 import { getRace, getRaceDrivers } from "@/app/libs/prisma/cfg/functions"
 
 const EditRace = async ({ params }: { params: { slug: string } }) => {
@@ -7,10 +8,11 @@ const EditRace = async ({ params }: { params: { slug: string } }) => {
         return <p>something went wrong</p>
     }
 
-    const drivers = await getRaceDrivers(race.id);
-
     return (
-        <EditRaceSettingsForm id={race.id} race={race.race} datetime={race.datetime.toString()} />
+        <div>
+            <EditRaceSettingsForm id={race.id} race={race.race} datetime={race.datetime.toString()} />
+            <Roster rid={race.id}/>
+        </div>
     )
 } 
 
