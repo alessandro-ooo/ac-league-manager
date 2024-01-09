@@ -107,7 +107,11 @@ const inject = async (): Promise<Prisma.BatchPayload> => {
             { field: 'UDP_PLUGIN_LOCAL_PORT', value: '0' },
             { field: 'UDP_PLUGIN_ADDRESS', value: '' },
             { field: 'AUTH_PLUGIN_ADDRESS', value: '' },
-            { field: 'LEGAL_TYRES', value: 'SV' }
+            { field: 'MAX_BALLAST_KG', value: '0' },
+            { field: 'QUALIFY_MAX_WAIT_PERC', value: '120' },
+            { field: 'START_RULE', value: '0' },
+            { field: 'NUM_THREADS', value: '2' },
+            { field: 'WELCOME_MESSAGE', value: '' }
         ]
     });
     return result;
