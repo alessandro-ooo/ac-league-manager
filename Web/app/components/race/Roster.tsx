@@ -1,5 +1,5 @@
 import { getRaceDrivers } from "@/app/libs/prisma/cfg/functions";
-import { TDrivers, TRosterProps } from "../types";
+import { TRosterProps } from "../types";
 import Driver from "./Driver";
 
 const Roster = async (props: TRosterProps) => {
