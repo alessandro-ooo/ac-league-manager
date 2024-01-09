@@ -1,11 +1,12 @@
 "use client"
 import { getAdminCookie } from "@/app/libs/cookies/functions";
 import { TRaceProps } from "../types"
+import { createINI } from "@/app/libs/file/functions";
 
 const clickButton = async (id: number) => {
-    console.log("click btn")
     const res = await fetch('/api/executeACServer', {
         method: 'POST',
+        body: JSON.stringify(id)
     });
     return;
 } 
