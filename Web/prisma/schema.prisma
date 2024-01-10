@@ -44,6 +44,8 @@ model Race {
     race String
     drivers Driver[]
     datetime DateTime
+    laps Int @default(10)
+    track String @default("magione")
 }
 
 model Driver {

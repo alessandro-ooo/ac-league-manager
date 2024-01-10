@@ -10,7 +10,7 @@ const EditRace = async ({ params }: { params: { slug: string } }) => {
 
     return (
         <div>
-            <EditRaceSettingsForm id={race.id} race={race.race} datetime={race.datetime.toString()} />
+            <EditRaceSettingsForm id={race.id} race={race.race} datetime={race.datetime.toString()} laps={race.laps} track={race.track} />
             <Roster rid={race.id}/>
         </div>
     )

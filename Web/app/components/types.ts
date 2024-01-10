@@ -27,6 +27,8 @@ type TRaceSettings = {
     id: number;
     race: string;
     datetime: string;
+    laps: number;
+    track: string;
 }
 
 type TRosterProps = {

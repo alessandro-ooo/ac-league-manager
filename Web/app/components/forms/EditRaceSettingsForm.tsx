@@ -5,7 +5,7 @@ import Input from "../Input";
 import { updateRace } from "@/app/libs/prisma/cfg/functions";
 
 const EditRaceSettingsForm = (props: TRaceSettings) => {
-    const {id, race, datetime} = props;
+    const {id, race, datetime, laps, track} = props;
 
     const {
         register,
@@ -15,7 +15,9 @@ const EditRaceSettingsForm = (props: TRaceSettings) => {
     } = useForm<TRaceSettings>({
         defaultValues: {
             race: race,
-            datetime: datetime
+            datetime: datetime,
+            laps: laps,
+            track: track,
         }
     });
 
@@ -33,6 +35,8 @@ const EditRaceSettingsForm = (props: TRaceSettings) => {
         })}>
             <Input key={0} type="input" label={"Race name"} placeholder={"Race name"} {...register("race", { required: false, maxLength: 20})}/>
             <Input key={1} type="datetime-local" label={"Date and time"} placeholder={""} {...register("datetime", { required: false, maxLength: 20})}/>
+            <Input key={1} type="input" label={"Number of laps"} placeholder={""} {...register("laps", { required: false, maxLength: 20})}/>
+            <Input key={1} type="input" label={"Track name"} placeholder={""} {...register("track", { required: false, maxLength: 20})}/>
             <input type="submit" />
         </form>
     )

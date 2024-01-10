@@ -13,6 +13,11 @@ const createRace = async (race: string, date: string) => {
     return result;
 }
 
+const deleteRace = async (id: number) => {
+    const result = await prisma.race.delete({where: {id: id}});
+    return result;
+}
+
 const getRace = async (id: number) => {
     const result = await prisma.race.findUnique({where: {id: id}});
     return result;
@@ -126,5 +131,6 @@ export {
     getAllRaces,
     getRace,
     getRaceDrivers,
-    updateRace
+    updateRace,
+    deleteRace
 }
